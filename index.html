@@ -3,224 +3,350 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AppMall | Minimalist Web Apps</title>
+    <title>AppMall | Premium Mobil & Web Uygulamaları Stüdyosu</title>
     <style>
+        /* --- Google Fonts --- */
+        @import url('https://googleapis.com');
+
         :root {
-            --bg: #f8fafc;
-            --text: #0f172a;
+            --bg: #0b0f19; /* Lüks Gece Mavisi / Siyah Arka Plan */
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
             --primary: #7a4bff; /* AppMall Orijinal Moru */
-            --card-bg: #ffffff;
-            --border: #e2e8f0;
+            --primary-glow: rgba(122, 75, 255, 0.15);
+            --card-bg: rgba(17, 24, 39, 0.7);
+            --border: rgba(255, 255, 255, 0.06);
+            --gradient-accent: linear-gradient(135deg, #7a4bff 0%, #ff5e62 100%);
         }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
+
+        * {
             margin: 0;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
         }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* --- Modern Arka Plan Işık Efektleri (Glow) --- */
+        body::before {
+            content: "";
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(122,75,255,0.2) 0%, rgba(0,0,0,0) 70%);
+            top: -100px;
+            left: -100px;
+            z-index: -1;
+        }
+
+        body::after {
+            content: "";
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255,94,98,0.1) 0%, rgba(0,0,0,0) 70%);
+            top: 400px;
+            right: -150px;
+            z-index: -1;
+        }
+
+        /* --- Navbar --- */
         nav {
             width: 100%;
-            max-width: 1000px;
+            max-width: 1200px;
+            margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 40px;
+            padding: 25px 20px;
+            position: sticky;
+            top: 0;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            z-index: 1000;
             border-bottom: 1px solid var(--border);
-            padding: 15px 0;
         }
+
         .logo-container {
             display: flex;
             align-items: center;
+            cursor: pointer;
         }
+
         .logo-svg {
-            height: 38px; /* Navbar için ideal yükseklik */
+            height: 36px;
             width: auto;
             display: block;
         }
+
         .right-nav {
             display: flex;
             align-items: center;
-            gap: 25px;
+            gap: 35px;
         }
+
         .nav-menu {
             display: flex;
-            gap: 20px;
+            gap: 28px;
             list-style: none;
             margin: 0;
             padding: 0;
         }
+
         .nav-menu a {
             text-decoration: none;
-            color: #475569;
+            color: var(--text-muted);
             font-weight: 500;
             font-size: 0.95rem;
-            transition: color 0.2s;
+            transition: color 0.3s, transform 0.3s;
         }
+
         .nav-menu a:hover {
-            color: var(--primary);
+            color: var(--text-main);
         }
+
         .lang-btn {
-            background: var(--card-bg);
+            background: rgba(255, 255, 255, 0.05);
             border: 1px solid var(--border);
+            color: var(--text-main);
             padding: 8px 16px;
-            border-radius: 8px;
+            border-radius: 50px;
             cursor: pointer;
             font-weight: 600;
-            font-size: 0.9rem;
-            transition: all 0.2s;
+            font-size: 0.85rem;
+            transition: all 0.3s;
         }
+
         .lang-btn:hover {
-            background: #f1f5f9;
+            background: var(--text-main);
+            color: var(--bg);
+            border-color: var(--text-main);
         }
-        header {
+
+        /* --- Hero Section --- */
+        .hero {
             text-align: center;
-            margin: 20px 0 40px 0;
-            max-width: 700px;
+            padding: 120px 20px 80px 20px;
+            max-width: 850px;
+            margin: 0 auto;
+            position: relative;
         }
+
+        .studio-badge {
+            background: rgba(122, 75, 255, 0.1);
+            border: 1px solid rgba(122, 75, 255, 0.3);
+            color: #a855f7;
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            display: inline-block;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 25px;
+            letter-spacing: -1.5px;
+            background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        h1 span {
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
         header p {
-            font-size: 1.2rem;
-            color: #475569;
-            line-height: 1.6;
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin-bottom: 40px;
         }
+
+        /* --- Main Content Wrap --- */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 40px;
+            letter-spacing: -0.5px;
+            position: relative;
+            display: inline-block;
+        }
+
+        /* --- Grid & Cards --- */
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            max-width: 1000px;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 30px;
             width: 100%;
+            margin-bottom: 100px;
         }
+
         .card {
             background: var(--card-bg);
-            padding: 24px;
-            border-radius: 16px;
-            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05);
-            text-decoration: none;
-            color: inherit;
-            transition: all 0.2s;
+            padding: 35px;
+            border-radius: 24px;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             border: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
         }
-        .card:hover { 
-            transform: translateY(-4px);
-            border-color: var(--primary);
-            box-shadow: 0 10px 15px -3px rgb(122 75 255 / 0.1);
+
+        .card::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(135deg, rgba(122,75,255,0.05) 0%, rgba(0,0,0,0) 50%);
+            opacity: 0;
+            transition: opacity 0.4s;
         }
+
+        .card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(122, 75, 255, 0.3);
+            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.8), 0 0 50px -10px var(--primary-glow);
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card-top {
+            position: relative;
+            z-index: 2;
+        }
+
+        .card-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .app-icon {
+            font-size: 2.2rem;
+            background: rgba(255,255,255,0.03);
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
         .badge {
-            background: #f3e8ff;
-            color: var(--primary);
-            padding: 4px 8px;
-            border-radius: 6px;
-            font-size: 0.8rem;
-            font-weight: bold;
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
         }
-        h2 {
-            font-size: 1.5rem;
-            margin: 15px 0 10px 0;
+
+        .badge.active { background: rgba(16, 185, 129, 0.1); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.2); }
+        .badge.soon { background: rgba(245, 158, 11, 0.1); color: #f59e0b; border: 1px solid rgba(245, 158, 11, 0.2); }
+
+        .card h2 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
         }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 35px;
+        }
+
+        .card-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            padding: 14px;
+            border-radius: 14px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            position: relative;
+            z-index: 2;
+        }
+
+        .btn-primary {
+            background: var(--text-main);
+            color: var(--bg);
+        }
+
+        .card:hover .btn-primary {
+            background: var(--primary);
+            color: var(--text-main);
+            box-shadow: 0 10px 20px -5px rgba(122, 75, 255, 0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(255,255,255,0.02);
+            color: rgba(255,255,255,0.2);
+            border: 1px solid var(--border);
+            pointer-events: none;
+        }
+
+        /* --- About Section --- */
+        .about-section {
+            background: rgba(255,255,255,0.01);
+            border: 1px solid var(--border);
+            border-radius: 32px;
+            padding: 60px;
+            margin-bottom: 100px;
+            backdrop-filter: blur(4px);
+        }
+
+        .about-section p {
+            color: var(--text-muted);
+            font-size: 1.15rem;
+            line-height: 1.8;
+            max-width: 900px;
+        }
+
+        /* --- Footer --- */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 40px 0;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* --- Responsive --- */
         @media (max-width: 768px) {
-            nav {
-                flex-direction: column;
-                gap: 15px;
-                text-align: center;
-            }
-            .right-nav {
-                flex-direction: column;
-                gap: 15px;
-            }
-            .nav-menu {
-                gap: 15px;
-            }
-        }
-    </style>
-</head>
-<body>
-
-    <nav>
-        <div class="logo-container">
-            <!-- AppMall Orijinal Vektörel Logosu (Resim Dosyası Gerektirmez, Asla Kırılmaz) -->
-            <svg class="logo-svg" viewBox="0 0 520 130" xmlns="http://w3.org">
-                <!-- Sol Taraf: Yumuşatılmış 4'lü Kare İkon Grubu -->
-                <g transform="translate(10, 10)">
-                    <!-- Sol Üst: Mor Kare -->
-                    <rect x="25" y="5" width="42" height="42" rx="14" fill="#7A4BFF" transform="rotate(-12 46 26)"/>
-                    <!-- Sağ Üst: Mercan Kırmızı Kare -->
-                    <rect x="75" y="15" width="42" height="42" rx="14" fill="#FF5E62" transform="rotate(15 96 36)"/>
-                    <!-- Sol Alt: Turkuaz Kare -->
-                    <rect x="15" y="58" width="42" height="42" rx="14" fill="#2BB7A4" transform="rotate(10 36 79)"/>
-                    <!-- Sağ Alt: Sarı Kare -->
-                    <rect x="65" y="62" width="42" height="42" rx="14" fill="#FFC845" transform="rotate(-8 86 83)"/>
-                </g>
-                <!-- Sağ Taraf: AppMall Tipografisi (Derin Antrasit Orijinal Font Rengi) -->
-                <text x="155" y="82" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="64" font-weight="700" fill="#22252A" letter-spacing="-1.5">AppMall</text>
-            </svg>
-        </div>
-        <div class="right-nav">
-            <ul class="nav-menu">
-                <li><a href="#" id="menuHome">Ana Sayfa</a></li>
-                <li><a href="#applications" id="menuApps">Uygulamalar</a></li>
-                <li><a href="#" id="menuAbout">Hakkımızda</a></li>
-                <li><a href="mailto:support@appmall.io" id="menuSupport">Destek</a></li>
-            </ul>
-            <button class="lang-btn" onclick="toggleLanguage()" id="langBtn">EN</button>
-        </div>
-    </nav>
-
-    <header>
-        <p id="mainDesc">Sade, hızlı ve hayatı kolaylaştıran mobil öncelikli uygulamalar çatısı.</p>
-    </header>
-
-    <main class="grid" id="applications">
-        <!-- Give Up Smoking -->
-        <a href="apps/give-up-smoking.html" class="card">
-            <span class="badge" id="appBadge">Sağlık & Yaşam</span>
-            <h2 id="appTitle">Give Up Smoking</h2>
-            <p id="appDesc">Sigarayı bırakma sürecinizi takip edin, sağlığınızı ve bütçenizi geri kazanın.</p>
-        </a>
-    </main>
-
-    <script>
-        const translations = {
-            tr: {
-                btn: "EN",
-                menuHome: "Ana Sayfa",
-                menuApps: "Uygulamalar",
-                menuAbout: "Hakkımızda",
-                menuSupport: "Destek",
-                desc: "Sade, hızlı ve hayatı kolaylaştıran mobil öncelikli uygulamalar çatısı.",
-                badge: "Sağlık & Yaşam",
-                appDesc: "Sigarayı bırakma sürecinizi takip edin, sağlığınızı ve bütçenizi geri kazanın."
-            },
-            en: {
-                btn: "TR",
-                menuHome: "Home",
-                menuApps: "Applications",
-                menuAbout: "About Us",
-                menuSupport: "Support",
-                desc: "Simple, fast, and mobile-first web applications hub.",
-                badge: "Health & Life",
-                appDesc: "Track your smoking cessation process, regain your health and budget."
-            }
-        };
-
-        let currentLang = 'tr';
-
-        function toggleLanguage() {
-            currentLang = currentLang === 'tr' ? 'en' : 'tr';
-            
-            document.getElementById('langBtn').innerText = translations[currentLang].btn;
-            document.getElementById('menuHome').innerText = translations[currentLang].menuHome;
-            document.getElementById('menuApps').innerText = translations[currentLang].menuApps;
-            document.getElementById('menuAbout').innerText = translations[currentLang].menuAbout;
-            document.getElementById('menuSupport').innerText = translations[currentLang].menuSupport;
-            document.getElementById('mainDesc').innerText = translations[currentLang].desc;
-            document.getElementById('appBadge').innerText = translations[currentLang].badge;
-            document.getElementById('appDesc').innerText = translations[currentLang].appDesc;
-            
-            document.documentElement.lang = currentLang;
-        }
-    </script>
-</body>
-</html>
+            nav { flex-direction: column; gap: 20px; padding: 20px; }
