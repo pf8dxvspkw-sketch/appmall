@@ -36,7 +36,7 @@
             display: flex;
             align-items: center;
         }
-        .logo-img {
+        .logo-svg {
             height: 38px; /* Navbar için ideal yükseklik */
             width: auto;
             display: block;
@@ -140,8 +140,22 @@
 
     <nav>
         <div class="logo-container">
-            <!-- Aynı dizindeki logo.png dosyasını çeker -->
-            <img src="logo.png" alt="AppMall Logo" class="logo-img">
+            <!-- AppMall Orijinal Vektörel Logosu (Resim Dosyası Gerektirmez, Asla Kırılmaz) -->
+            <svg class="logo-svg" viewBox="0 0 520 130" xmlns="http://w3.org">
+                <!-- Sol Taraf: Yumuşatılmış 4'lü Kare İkon Grubu -->
+                <g transform="translate(10, 10)">
+                    <!-- Sol Üst: Mor Kare -->
+                    <rect x="25" y="5" width="42" height="42" rx="14" fill="#7A4BFF" transform="rotate(-12 46 26)"/>
+                    <!-- Sağ Üst: Mercan Kırmızı Kare -->
+                    <rect x="75" y="15" width="42" height="42" rx="14" fill="#FF5E62" transform="rotate(15 96 36)"/>
+                    <!-- Sol Alt: Turkuaz Kare -->
+                    <rect x="15" y="58" width="42" height="42" rx="14" fill="#2BB7A4" transform="rotate(10 36 79)"/>
+                    <!-- Sağ Alt: Sarı Kare -->
+                    <rect x="65" y="62" width="42" height="42" rx="14" fill="#FFC845" transform="rotate(-8 86 83)"/>
+                </g>
+                <!-- Sağ Taraf: AppMall Tipografisi (Derin Antrasit Orijinal Font Rengi) -->
+                <text x="155" y="82" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="64" font-weight="700" fill="#22252A" letter-spacing="-1.5">AppMall</text>
+            </svg>
         </div>
         <div class="right-nav">
             <ul class="nav-menu">
