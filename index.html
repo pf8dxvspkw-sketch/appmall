@@ -29,39 +29,39 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 40px;
-            padding: 10px 0;
+            border-bottom: 1px solid var(--border);
+            padding: 15px 0;
         }
         .logo-container {
             display: flex;
             align-items: center;
         }
         .logo-img {
-            height: 35px; /* Navbar için ideal şık yükseklik */
+            height: 38px; /* Navbar için ideal yükseklik */
             width: auto;
             display: block;
         }
-        .nav-menu {
+        .right-nav {
             display: flex;
             align-items: center;
-            gap: 24px;
+            gap: 25px;
+        }
+        .nav-menu {
+            display: flex;
+            gap: 20px;
             list-style: none;
             margin: 0;
             padding: 0;
         }
         .nav-menu a {
             text-decoration: none;
-            color: #64748b;
+            color: #475569;
             font-weight: 500;
             font-size: 0.95rem;
             transition: color 0.2s;
         }
         .nav-menu a:hover {
             color: var(--primary);
-        }
-        .right-nav {
-            display: flex;
-            align-items: center;
-            gap: 15px;
         }
         .lang-btn {
             background: var(--card-bg);
@@ -82,7 +82,7 @@
             max-width: 700px;
         }
         header p {
-            font-size: 1.15rem;
+            font-size: 1.2rem;
             color: #475569;
             line-height: 1.6;
         }
@@ -109,7 +109,7 @@
             box-shadow: 0 10px 15px -3px rgb(122 75 255 / 0.1);
         }
         .badge {
-            background: #f3e8ff; /* Mor tonlu arka plan */
+            background: #f3e8ff;
             color: var(--primary);
             padding: 4px 8px;
             border-radius: 6px;
@@ -120,10 +120,13 @@
             font-size: 1.5rem;
             margin: 15px 0 10px 0;
         }
-        
-        /* Mobil Ekranlar İçin Düzenleme */
         @media (max-width: 768px) {
             nav {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+            .right-nav {
                 flex-direction: column;
                 gap: 15px;
             }
@@ -137,15 +140,15 @@
 
     <nav>
         <div class="logo-container">
-            <!-- AppMall Orijinal Şeffaf Logosu Doğrudan Çekiliyor -->
-            <img src="https://perquery.com" alt="AppMall Logo" class="logo-img">
+            <!-- Aynı dizindeki logo.png dosyasını çeker -->
+            <img src="logo.png" alt="AppMall Logo" class="logo-img">
         </div>
         <div class="right-nav">
             <ul class="nav-menu">
                 <li><a href="#" id="menuHome">Ana Sayfa</a></li>
                 <li><a href="#applications" id="menuApps">Uygulamalar</a></li>
-                <li><a href="#about" id="menuAbout">Hakkımızda</a></li>
-                <li><a href="#support" id="menuSupport">Destek</a></li>
+                <li><a href="#" id="menuAbout">Hakkımızda</a></li>
+                <li><a href="mailto:support@appmall.io" id="menuSupport">Destek</a></li>
             </ul>
             <button class="lang-btn" onclick="toggleLanguage()" id="langBtn">EN</button>
         </div>
@@ -165,7 +168,6 @@
     </main>
 
     <script>
-        // Dil içerikleri veri sözlüğü (Menü linkleri dahil edildi)
         const translations = {
             tr: {
                 btn: "EN",
@@ -194,7 +196,6 @@
         function toggleLanguage() {
             currentLang = currentLang === 'tr' ? 'en' : 'tr';
             
-            // DOM elemanlarını güncelleme
             document.getElementById('langBtn').innerText = translations[currentLang].btn;
             document.getElementById('menuHome').innerText = translations[currentLang].menuHome;
             document.getElementById('menuApps').innerText = translations[currentLang].menuApps;
@@ -204,7 +205,6 @@
             document.getElementById('appBadge').innerText = translations[currentLang].badge;
             document.getElementById('appDesc').innerText = translations[currentLang].appDesc;
             
-            // HTML etiket dilini güncelleme
             document.documentElement.lang = currentLang;
         }
     </script>
