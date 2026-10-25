@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AppMall | Minimalist Web Apps</title>
+    <style>
+        :root {
+            --bg: #f8fafc;
+            --text: #0f172a;
+            --primary: #3b82f6;
+            --card-bg: #ffffff;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        header {
+            text-align: center;
+            margin: 40px 0;
+        }
+        h1 { font-size: 2.5rem; margin-bottom: 10px; }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            max-width: 1000px;
+            width: 100%;
+        }
+        .card {
+            background: var(--card-bg);
+            padding: 24px;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05);
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.2s;
+        }
+        .card:hover { transform: translateY(-4px); }
+        .badge {
+            background: #dbeafe;
+            color: var(--primary);
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>AppMall</h1>
+        <p>Sade, hızlı ve hayatı kolaylaştıran mobil öncelikli uygulamalar çatısı.</p>
+    </header>
+
+    <main class="grid">
+        <!-- Give Up Smoking Kartı -->
+        <a href="apps/give-up-smoking.html" class="card">
+            <span class="badge">Sağlık & Yaşam</span>
+            <h2>Give Up Smoking</h2>
+            <p>Sigarayı bırakma sürecinizi takip edin, sağlığınızı ve bütçenizi geri kazanın.</p>
+        </a>
+    </main>
+
+</body>
+</html>
