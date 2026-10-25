@@ -10,6 +10,7 @@
             --text: #0f172a;
             --primary: #3b82f6;
             --card-bg: #ffffff;
+            --border: #e2e8f0;
         }
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -21,9 +22,29 @@
             flex-direction: column;
             align-items: center;
         }
+        nav {
+            width: 100%;
+            max-width: 1000px;
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 20px;
+        }
+        .lang-btn {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+        .lang-btn:hover {
+            background: #f1f5f9;
+        }
         header {
             text-align: center;
-            margin: 40px 0;
+            margin: 20px 0 40px 0;
         }
         h1 { font-size: 2.5rem; margin-bottom: 10px; }
         .grid {
@@ -41,6 +62,7 @@
             text-decoration: none;
             color: inherit;
             transition: transform 0.2s;
+            border: 1px solid var(--border);
         }
         .card:hover { transform: translateY(-4px); }
         .badge {
@@ -55,19 +77,55 @@
 </head>
 <body>
 
+    <nav>
+        <button class="lang-btn" onclick="toggleLanguage()" id="langBtn">EN</button>
+    </nav>
+
     <header>
-        <h1>AppMall</h1>
-        <p>Sade, hızlı ve hayatı kolaylaştıran mobil öncelikli uygulamalar çatısı.</p>
+        <h1 id="mainTitle">AppMall</h1>
+        <p id="mainDesc">Sade, hızlı ve hayatı kolaylaştıran mobil öncelikli uygulamalar çatısı.</p>
     </header>
 
     <main class="grid">
-        <!-- Give Up Smoking Kartı -->
+        <!-- Give Up Smoking -->
         <a href="apps/give-up-smoking.html" class="card">
-            <span class="badge">Sağlık & Yaşam</span>
-            <h2>Give Up Smoking</h2>
-            <p>Sigarayı bırakma sürecinizi takip edin, sağlığınızı ve bütçenizi geri kazanın.</p>
+            <span class="badge" id="appBadge">Sağlık & Yaşam</span>
+            <h2 id="appTitle">Give Up Smoking</h2>
+            <p id="appDesc">Sigarayı bırakma sürecinizi takip edin, sağlığınızı ve bütçenizi geri kazanın.</p>
         </a>
     </main>
 
+    <script>
+        // Dil içerikleri veri sözlüğü
+        const translations = {
+            tr: {
+                btn: "EN",
+                desc: "Sade, hızlı ve hayatı kolaylaştıran mobil öncelikli uygulamalar çatısı.",
+                badge: "Sağlık & Yaşam",
+                appDesc: "Sigarayı bırakma sürecinizi takip edin, sağlığınızı ve bütçenizi geri kazanın."
+            },
+            en: {
+                btn: "TR",
+                desc: "Simple, fast, and mobile-first web applications hub.",
+                badge: "Health & Life",
+                appDesc: "Track your smoking cessation process, regain your health and budget."
+            }
+        };
+
+        let currentLang = 'tr';
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'tr' ? 'en' : 'tr';
+            
+            // DOM elemanlarını güncelleme
+            document.getElementById('langBtn').innerText = translations[currentLang].btn;
+            document.getElementById('mainDesc').innerText = translations[currentLang].desc;
+            document.getElementById('appBadge').innerText = translations[currentLang].badge;
+            document.getElementById('appDesc').innerText = translations[currentLang].appDesc;
+            
+            // HTML etiket dilini güncelleme
+            document.documentElement.lang = currentLang;
+        }
+    </script>
 </body>
 </html>
