@@ -8,7 +8,7 @@
         :root {
             --bg: #f8fafc;
             --text: #0f172a;
-            --primary: #3b82f6;
+            --primary: #7a4bff; /* AppMall Orijinal Moru */
             --card-bg: #ffffff;
             --border: #e2e8f0;
         }
@@ -26,8 +26,42 @@
             width: 100%;
             max-width: 1000px;
             display: flex;
-            justify-content: flex-end;
-            margin-bottom: 20px;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            padding: 10px 0;
+        }
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+        .logo-img {
+            height: 35px; /* Navbar için ideal şık yükseklik */
+            width: auto;
+            display: block;
+        }
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .nav-menu a {
+            text-decoration: none;
+            color: #64748b;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+        .nav-menu a:hover {
+            color: var(--primary);
+        }
+        .right-nav {
+            display: flex;
+            align-items: center;
+            gap: 15px;
         }
         .lang-btn {
             background: var(--card-bg);
@@ -45,8 +79,13 @@
         header {
             text-align: center;
             margin: 20px 0 40px 0;
+            max-width: 700px;
         }
-        h1 { font-size: 2.5rem; margin-bottom: 10px; }
+        header p {
+            font-size: 1.15rem;
+            color: #475569;
+            line-height: 1.6;
+        }
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -61,32 +100,62 @@
             box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05);
             text-decoration: none;
             color: inherit;
-            transition: transform 0.2s;
+            transition: all 0.2s;
             border: 1px solid var(--border);
         }
-        .card:hover { transform: translateY(-4px); }
+        .card:hover { 
+            transform: translateY(-4px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 15px -3px rgb(122 75 255 / 0.1);
+        }
         .badge {
-            background: #dbeafe;
+            background: #f3e8ff; /* Mor tonlu arka plan */
             color: var(--primary);
             padding: 4px 8px;
             border-radius: 6px;
             font-size: 0.8rem;
             font-weight: bold;
         }
+        h2 {
+            font-size: 1.5rem;
+            margin: 15px 0 10px 0;
+        }
+        
+        /* Mobil Ekranlar İçin Düzenleme */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .nav-menu {
+                gap: 15px;
+            }
+        }
     </style>
 </head>
 <body>
 
     <nav>
-        <button class="lang-btn" onclick="toggleLanguage()" id="langBtn">EN</button>
+        <div class="logo-container">
+            <!-- AppMall Orijinal Şeffaf Logosu Doğrudan Çekiliyor -->
+            <img src="https://perquery.com" alt="AppMall Logo" class="logo-img">
+        </div>
+        <div class="right-nav">
+            <ul class="nav-menu">
+                <li><a href="#" id="menuHome">Ana Sayfa</a></li>
+                <li><a href="#applications" id="menuApps">Uygulamalar</a></li>
+                <li><a href="#about" id="menuAbout">Hakkımızda</a></li>
+                <li><a href="#support" id="menuSupport">Destek</a></li>
+            </ul>
+            <button class="lang-btn" onclick="toggleLanguage()" id="langBtn">EN</button>
+        </div>
     </nav>
 
     <header>
-        <h1 id="mainTitle">AppMall</h1>
         <p id="mainDesc">Sade, hızlı ve hayatı kolaylaştıran mobil öncelikli uygulamalar çatısı.</p>
     </header>
 
-    <main class="grid">
+    <main class="grid" id="applications">
         <!-- Give Up Smoking -->
         <a href="apps/give-up-smoking.html" class="card">
             <span class="badge" id="appBadge">Sağlık & Yaşam</span>
@@ -96,16 +165,24 @@
     </main>
 
     <script>
-        // Dil içerikleri veri sözlüğü
+        // Dil içerikleri veri sözlüğü (Menü linkleri dahil edildi)
         const translations = {
             tr: {
                 btn: "EN",
+                menuHome: "Ana Sayfa",
+                menuApps: "Uygulamalar",
+                menuAbout: "Hakkımızda",
+                menuSupport: "Destek",
                 desc: "Sade, hızlı ve hayatı kolaylaştıran mobil öncelikli uygulamalar çatısı.",
                 badge: "Sağlık & Yaşam",
                 appDesc: "Sigarayı bırakma sürecinizi takip edin, sağlığınızı ve bütçenizi geri kazanın."
             },
             en: {
                 btn: "TR",
+                menuHome: "Home",
+                menuApps: "Applications",
+                menuAbout: "About Us",
+                menuSupport: "Support",
                 desc: "Simple, fast, and mobile-first web applications hub.",
                 badge: "Health & Life",
                 appDesc: "Track your smoking cessation process, regain your health and budget."
@@ -119,6 +196,10 @@
             
             // DOM elemanlarını güncelleme
             document.getElementById('langBtn').innerText = translations[currentLang].btn;
+            document.getElementById('menuHome').innerText = translations[currentLang].menuHome;
+            document.getElementById('menuApps').innerText = translations[currentLang].menuApps;
+            document.getElementById('menuAbout').innerText = translations[currentLang].menuAbout;
+            document.getElementById('menuSupport').innerText = translations[currentLang].menuSupport;
             document.getElementById('mainDesc').innerText = translations[currentLang].desc;
             document.getElementById('appBadge').innerText = translations[currentLang].badge;
             document.getElementById('appDesc').innerText = translations[currentLang].appDesc;
