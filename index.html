@@ -9,13 +9,12 @@
         @import url('https://googleapis.com');
 
         :root {
-            --bg: #0b0f19; /* Lüks Gece Mavisi / Siyah Arka Plan */
+            --bg: #0b0f19; /* Lüks Gece Mavisi Arka Plan */
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
             --primary: #7a4bff; /* AppMall Orijinal Moru */
-            --primary-glow: rgba(122, 75, 255, 0.15);
-            --card-bg: rgba(17, 24, 39, 0.7);
-            --border: rgba(255, 255, 255, 0.06);
+            --card-bg: #111827;
+            --border: rgba(255, 255, 255, 0.08);
             --gradient-accent: linear-gradient(135deg, #7a4bff 0%, #ff5e62 100%);
         }
 
@@ -31,54 +30,24 @@
             background-color: var(--bg);
             color: var(--text-main);
             overflow-x: hidden;
+            padding: 0 20px;
         }
 
-        /* --- Sitenin Ana Taşıyıcısı --- */
+        /* --- Ana Kapsayıcı --- */
         .wrapper {
-            position: relative;
             width: 100%;
-            z-index: 1; /* İçeriği en üste taşır */
-        }
-
-        /* --- Modern Arka Plan Işık Efektleri --- */
-        .glow-left {
-            position: absolute;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(122,75,255,0.15) 0%, rgba(0,0,0,0) 70%);
-            top: -100px;
-            left: -100px;
-            z-index: 2;
-            pointer-events: none;
-        }
-
-        .glow-right {
-            position: absolute;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(255,94,98,0.08) 0%, rgba(0,0,0,0) 70%);
-            top: 400px;
-            right: -150px;
-            z-index: 2;
-            pointer-events: none;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         /* --- Navbar --- */
         nav {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 25px 20px;
-            position: sticky;
-            top: 0;
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            z-index: 1000;
+            padding: 30px 0;
             border-bottom: 1px solid var(--border);
-            background-color: rgba(11, 15, 25, 0.8);
+            margin-bottom: 60px;
         }
 
         .logo-container {
@@ -88,7 +57,7 @@
         }
 
         .logo-svg {
-            height: 36px;
+            height: 38px;
             width: auto;
             display: block;
         }
@@ -103,8 +72,6 @@
             display: flex;
             gap: 28px;
             list-style: none;
-            margin: 0;
-            padding: 0;
         }
 
         .nav-menu a {
@@ -123,7 +90,7 @@
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid var(--border);
             color: var(--text-main);
-            padding: 8px 16px;
+            padding: 8px 18px;
             border-radius: 50px;
             cursor: pointer;
             font-weight: 600;
@@ -134,23 +101,12 @@
         .lang-btn:hover {
             background: var(--text-main);
             color: var(--bg);
-            border-color: var(--text-main);
         }
 
-        /* --- Container Mimarisi --- */
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            position: relative;
-            z-index: 10; /* Katman sorununu çözer */
-        }
-
-        /* --- Hero Section --- */
+        /* --- Hero Alanı --- */
         .hero {
             text-align: center;
-            padding: 100px 0 60px 0;
+            padding: 40px 0 80px 0;
             max-width: 850px;
             margin: 0 auto;
         }
@@ -175,9 +131,6 @@
             line-height: 1.2;
             margin-bottom: 25px;
             letter-spacing: -1.5px;
-            background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
         }
 
         h1 span {
@@ -192,6 +145,7 @@
             line-height: 1.7;
         }
 
+        /* --- Kartlar ve Grid --- */
         .section-title {
             font-size: 2rem;
             font-weight: 700;
@@ -199,7 +153,6 @@
             letter-spacing: -0.5px;
         }
 
-        /* --- Grid & Cards --- */
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
@@ -210,37 +163,20 @@
 
         .card {
             background: var(--card-bg);
-            padding: 35px;
+            padding: 40px;
             border-radius: 24px;
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
             border: 1px solid var(--border);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card::before {
-            content: "";
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(135deg, rgba(122,75,255,0.05) 0%, rgba(0,0,0,0) 50%);
-            opacity: 0;
-            transition: opacity 0.4s;
+            transition: all 0.3s ease;
         }
 
         .card:hover {
-            transform: translateY(-6px);
-            border-color: rgba(122, 75, 255, 0.3);
-            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.8), 0 0 50px -10px var(--primary-glow);
+            transform: translateY(-5px);
+            border-color: rgba(122, 75, 255, 0.4);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
         }
-
-        .card:hover::before { opacity: 1; }
-
-        .card-top { position: relative; z-index: 5; }
 
         .card-meta {
             display: flex;
@@ -252,12 +188,12 @@
         .app-icon {
             font-size: 2.2rem;
             background: rgba(255,255,255,0.03);
-            width: 60px;
-            height: 60px;
+            width: 65px;
+            height: 65px;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 16px;
+            border-radius: 18px;
             border: 1px solid rgba(255,255,255,0.05);
         }
 
@@ -299,40 +235,31 @@
             font-weight: 600;
             font-size: 0.95rem;
             transition: all 0.3s;
-            position: relative;
-            z-index: 5;
         }
 
         .btn-primary { background: var(--text-main); color: var(--bg); }
-
-        .card:hover .btn-primary {
-            background: var(--primary);
-            color: var(--text-main);
-            box-shadow: 0 10px 20px -5px rgba(122, 75, 255, 0.4);
-        }
+        .card:hover .btn-primary { background: var(--primary); color: var(--text-main); }
 
         .btn-secondary {
             background: rgba(255,255,255,0.02);
-            color: rgba(255,255,255,0.2);
+            color: rgba(255,255,255,0.3);
             border: 1px solid var(--border);
             pointer-events: none;
         }
 
-        /* --- About Section --- */
+        /* --- Hakkımızda Alanı --- */
         .about-section {
             background: rgba(255,255,255,0.01);
             border: 1px solid var(--border);
             border-radius: 32px;
-            padding: 60px;
+            padding: 50px;
             margin-bottom: 100px;
-            backdrop-filter: blur(4px);
         }
 
         .about-section p {
             color: var(--text-muted);
             font-size: 1.15rem;
             line-height: 1.8;
-            max-width: 900px;
         }
 
         /* --- Footer --- */
@@ -346,3 +273,47 @@
 
         /* --- Responsive --- */
         @media (max-width: 768px) {
+            nav { flex-direction: column; gap: 20px; text-align: center; }
+            .right-nav { flex-direction: column; gap: 20px; width: 100%; }
+            .nav-menu { justify-content: center; width: 100%; }
+            h1 { font-size: 2.5rem; }
+            .about-section { padding: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="wrapper">
+        <!-- Üst Menü -->
+        <nav>
+            <div class="logo-container" onclick="window.scrollTo(0,0)">
+                <svg class="logo-svg" viewBox="0 0 520 130" xmlns="http://w3.org">
+                    <g transform="translate(10, 10)">
+                        <rect x="25" y="5" width="42" height="42" rx="14" fill="#7A4BFF" transform="rotate(-12 46 26)"/>
+                        <rect x="75" y="15" width="42" height="42" rx="14" fill="#FF5E62" transform="rotate(15 96 36)"/>
+                        <rect x="15" y="58" width="42" height="42" rx="14" fill="#2BB7A4" transform="rotate(10 36 79)"/>
+                        <rect x="65" y="62" width="42" height="42" rx="14" fill="#FFC845" transform="rotate(-8 86 83)"/>
+                    </g>
+                    <text x="155" y="82" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="64" font-weight="700" fill="#FFFFFF" letter-spacing="-1.5">AppMall</text>
+                </svg>
+            </div>
+            <div class="right-nav">
+                <ul class="nav-menu">
+                    <li><a href="#" id="menuHome">Ana Sayfa</a></li>
+                    <li><a href="#apps" id="menuApps">Uygulamalar</a></li>
+                    <li><a href="#about" id="menuAbout">Hakkımızda</a></li>
+                    <li><a href="mailto:support@appmall.io" id="menuSupport">Destek</a></li>
+                </ul>
+                <button class="lang-btn" onclick="toggleLanguage()" id="langBtn">EN</button>
+            </div>
+        </nav>
+
+        <!-- Giriş Bölümü -->
+        <header class="hero">
+            <div class="studio-badge" id="heroBadge">Uygulama Geliştirme Stüdyosu</div>
+            <h1 id="mainTitle">Mikro Çözümlerle<br>Geleceği <span>Şekillendiriyoruz</span></h1>
+            <p id="mainDesc">AppMall çatısı altında; günlük hayatın karmaşasını çözen, hız, estetik ve minimalizmi odağına alan yeni nesil mobil öncelikli ürünler üretiyoruz.</p>
+        </header>
+
+        <!-- Uygulamalar Portföyü -->
+        <section id="apps">
