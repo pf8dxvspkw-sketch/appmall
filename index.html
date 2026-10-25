@@ -33,10 +33,9 @@
             padding: 0 20px;
         }
 
-        /* --- Ana Kapsayıcı --- */
         .wrapper {
             width: 100%;
-            max-width: 1200px;
+            max-width: 1100px;
             margin: 0 auto;
         }
 
@@ -57,7 +56,7 @@
         }
 
         .logo-svg {
-            height: 46px; /* Büyütülmüş Logo */
+            height: 56px; /* Logo Boyutu Belirgin Şekilde Büyütüldü */
             width: auto;
             display: block;
         }
@@ -103,10 +102,10 @@
             color: var(--bg);
         }
 
-        /* --- Hero Alanı --- */
+        /* --- Hero Giriş Alanı --- */
         .hero {
             text-align: center;
-            padding: 40px 0 80px 0;
+            padding: 20px 0 80px 0;
             max-width: 850px;
             margin: 0 auto;
         }
@@ -156,9 +155,10 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             display: inline-block;
+            margin-top: 10px;
         }
 
-        /* --- Kartlar ve Grid --- */
+        /* --- Kartlar Düzeni --- */
         .section-title {
             font-size: 2rem;
             font-weight: 700;
@@ -260,7 +260,7 @@
             pointer-events: none;
         }
 
-        /* --- Hakkımızda Alanı --- */
+        /* --- Hakkımızda --- */
         .about-section {
             background: rgba(255,255,255,0.01);
             border: 1px solid var(--border);
@@ -297,7 +297,7 @@
 <body>
 
     <div class="wrapper">
-        <!-- Üst Menü -->
+        <!-- Navbar Düzeni -->
         <nav>
             <div class="logo-container" onclick="window.scrollTo(0,0)">
                 <svg class="logo-svg" viewBox="0 0 520 130" xmlns="http://w3.org">
@@ -321,5 +321,5 @@
             </div>
         </nav>
 
-        <!-- Giriş Bölümü (Metinlerin görünmesi için düzeltildi) -->
+        <!-- Giriş ve Metinler -->
         <header class="hero">
