@@ -10,8 +10,8 @@
 
         :root {
             --bg: #0b0f19; /* Lüks Gece Mavisi Arka Plan */
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
+            --text-main: #ffffff !important; /* Beyaz Renk Kesinleştirildi */
+            --text-muted: #cbd5e1 !important; /* Açık Gri Renk Kesinleştirildi */
             --primary: #7a4bff; /* AppMall Orijinal Moru */
             --card-bg: #111827;
             --border: rgba(255, 255, 255, 0.08);
@@ -27,8 +27,8 @@
         }
 
         body {
-            background-color: var(--bg);
-            color: var(--text-main);
+            background-color: #0b0f19 !important;
+            color: #ffffff !important;
             overflow-x: hidden;
             padding: 0 20px;
         }
@@ -56,7 +56,7 @@
         }
 
         .logo-svg {
-            height: 56px; /* Logo Boyutu Belirgin Şekilde Büyütüldü */
+            height: 56px; /* Büyütülmüş Logo */
             width: auto;
             display: block;
         }
@@ -75,20 +75,20 @@
 
         .nav-menu a {
             text-decoration: none;
-            color: var(--text-muted);
+            color: #94a3b8 !important;
             font-weight: 500;
             font-size: 0.95rem;
             transition: color 0.3s;
         }
 
         .nav-menu a:hover {
-            color: var(--text-main);
+            color: #ffffff !important;
         }
 
         .lang-btn {
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid var(--border);
-            color: var(--text-main);
+            color: #ffffff !important;
             padding: 8px 18px;
             border-radius: 50px;
             cursor: pointer;
@@ -98,8 +98,8 @@
         }
 
         .lang-btn:hover {
-            background: var(--text-main);
-            color: var(--bg);
+            background: #ffffff !important;
+            color: #0b0f19 !important;
         }
 
         /* --- Hero Giriş Alanı --- */
@@ -111,9 +111,9 @@
         }
 
         .studio-badge {
-            background: rgba(122, 75, 255, 0.1);
-            border: 1px solid rgba(122, 75, 255, 0.3);
-            color: #a855f7;
+            background: rgba(122, 75, 255, 0.15);
+            border: 1px solid rgba(122, 75, 255, 0.4);
+            color: #c084fc !important;
             padding: 6px 16px;
             border-radius: 50px;
             font-size: 0.85rem;
@@ -130,18 +130,19 @@
             line-height: 1.2;
             margin-bottom: 25px;
             letter-spacing: -1.5px;
-            color: var(--text-main);
+            color: #ffffff !important; /* Görünmeme sorununu çözen kritik renk zorlaması */
         }
 
         h1 span {
             background: var(--gradient-accent);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            display: inline-block;
         }
 
         .hero p {
             font-size: 1.25rem;
-            color: var(--text-muted);
+            color: #cbd5e1 !important; /* Görünmeme sorununu çözen kritik renk zorlaması */
             line-height: 1.7;
             margin-bottom: 25px;
         }
@@ -164,6 +165,7 @@
             font-weight: 700;
             margin-bottom: 40px;
             letter-spacing: -0.5px;
+            color: #ffffff !important;
         }
 
         .grid {
@@ -227,10 +229,11 @@
             font-weight: 700;
             margin-bottom: 12px;
             letter-spacing: -0.5px;
+            color: #ffffff !important;
         }
 
         .card p {
-            color: var(--text-muted);
+            color: #94a3b8 !important;
             font-size: 1rem;
             line-height: 1.6;
             margin-bottom: 35px;
@@ -250,8 +253,8 @@
             transition: all 0.3s;
         }
 
-        .btn-primary { background: var(--text-main); color: var(--bg); }
-        .card:hover .btn-primary { background: var(--primary); color: var(--text-main); }
+        .btn-primary { background: #ffffff; color: #0b0f19; }
+        .card:hover .btn-primary { background: var(--primary); color: #ffffff; }
 
         .btn-secondary {
             background: rgba(255,255,255,0.02);
@@ -270,7 +273,7 @@
         }
 
         .about-section p {
-            color: var(--text-muted);
+            color: #94a3b8 !important;
             font-size: 1.15rem;
             line-height: 1.8;
         }
@@ -280,7 +283,7 @@
             border-top: 1px solid var(--border);
             padding: 40px 0;
             text-align: center;
-            color: var(--text-muted);
+            color: #94a3b8 !important;
             font-size: 0.9rem;
         }
 
@@ -297,7 +300,7 @@
 <body>
 
     <div class="wrapper">
-        <!-- Navbar Düzeni -->
+        <!-- Navbar -->
         <nav>
             <div class="logo-container" onclick="window.scrollTo(0,0)">
                 <svg class="logo-svg" viewBox="0 0 520 130" xmlns="http://w3.org">
@@ -315,11 +318,3 @@
                     <li><a href="#" id="menuHome">Ana Sayfa</a></li>
                     <li><a href="#apps" id="menuApps">Uygulamalar</a></li>
                     <li><a href="#about" id="menuAbout">Hakkımızda</a></li>
-                    <li><a href="mailto:support@appmall.io" id="menuSupport">Destek</a></li>
-                </ul>
-                <button class="lang-btn" onclick="toggleLanguage()" id="langBtn">EN</button>
-            </div>
-        </nav>
-
-        <!-- Giriş ve Metinler -->
-        <header class="hero">
